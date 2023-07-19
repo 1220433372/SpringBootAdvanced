@@ -1,0 +1,120 @@
+# 项目相关配置
+advanced:
+  # 名称
+  name: advanced
+  # 版本
+  version: 1.0
+  # 版权年份
+  copyrightYear: 2023
+  # 实例演示开关
+  demoEnabled: true
+  # 文件路径 示例（ Windows配置D:/advanced/uploadPath，Linux配置 /home/advanced/uploadPath）
+  profile: D:/advanced/uploadPath
+  # 获取ip地址开关
+  addressEnabled: false
+
+
+
+
+server:
+  port: 8081
+
+
+logging:
+  level:
+    com.sunxs: info
+  file:
+    path: ./logs
+
+#userinfo:
+#  age: 25
+#  name: myjszl
+#  active: true
+#  created-date: 2018/03/31 16:54:30
+#  map: { k1: v1,k2: v2 }
+#  hobbies:
+#    - one
+#    - two
+#    - three
+
+spring:
+  datasource:
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+#    url: jdbc:mysql://localhost:3306/sunxsboot?serverTimezone=GMT
+    url: jdbc:mysql://8.130.114.9:3306/sunxsboot?serverTimezone=GMT
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss # 返回的JSON日期格式
+    time-zone: Asia/Shanghai # 时区
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 200MB
+  # redis 配置
+  redis:
+    # 地址
+    host: localhost
+    # 端口，默认为6379
+    port: 6379
+    # 数据库索引
+    database: 0
+    # 密码
+    password:
+    # 连接超时时间
+    timeout: 10s
+    lettuce:
+      pool:
+        # 连接池中的最小空闲连接
+        min-idle: 0
+        # 连接池中的最大空闲连接
+        max-idle: 8
+        # 连接池的最大数据库连接数
+        max-active: 8
+        # #连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-wait: -1ms
+  swagger:
+    front:
+      groupName: 前台管理
+      title: 前台
+      version: 1.0
+      description: 测试
+      enable: true
+      contactName: 孙先生
+      contactEmail: 1220433372@qq.com
+      contactUrl: baidu.com
+      basePackage: com.sunxs.boot.student.controller
+    back:
+      groupName: 后台管理
+      title: 后台
+      version: 1.0
+      description: 测试
+      enable: true
+      contactName: 孙先生
+      contactEmail: 1220433372@qq.com
+      contactUrl: baidu.com
+      basePackage: com.sunxs.boot.student.controller
+
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    default-enum-type-handler: org.apache.ibatis.type.EnumOrdinalTypeHandler
+  global-config:
+    db-config:
+      # 全局默认主键类型
+      id-type: ASSIGN_ID
+      logic-delete-field: del_flag
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  # mapper xml映射路径
+  mapper-locations: classpath*:mapper/**/*Mapper.xml
+  # 指定包内的枚举类使用 MybatisEnumTypeHandler
+  type-enums-package: com.sunxs.boot.framework.enums
+
+# swagger配置
+springdoc:
+  swagger-ui:
+    enabled: true
+
